@@ -1,0 +1,89 @@
+</div>
+<div id="dropDownSelect1">
+	<% lang = @language.present? && @language.language.eql?('ru') ? 'Russian' : 'English' %>
+	<%= select_tag "language_select", options_for_select([ 'Russian', 'English'], lang) %>
+</div>
+<div class="container-contact100">
+	<div class="wrap-contact100">
+		<%= form_for @contact, url: get_form_data_path, html: { class: "contact100-form new_contact_form validate-form" } do |f| %>
+			<span class="contact100-form-title">
+				<%= t 'send_us_message' %>
+			</span>
+
+			<label class="label-input100" for="first-name"><%= t 'tell_us_your_name' %> *</label>
+			<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Type first name">
+                <%= f.text_field :first_name, class: 'input100 required', placeholder: "#{t 'first_name'}", required: true %>
+			</div>
+			<div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Type last name">
+                <%= f.text_field :last_name, class: 'input100 required', placeholder: "#{t 'last_name'}", required: true %>
+			</div>
+
+			<label class="label-input100" for="email"><%= t 'enter_your_email' %> *</label>
+			<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <%= f.email_field :email, class: 'input100 required', placeholder: "#{t 'email_placeholder'}", required: true %>
+			</div>
+
+			<label class="label-input100" for="phone"><%= t 'enter_your_number' %></label>
+			<div class="wrap-input100">
+                <%= f.text_field :mobile, class: 'input100 required', placeholder: "#{t 'mobile_placeholder'}", required: true %>
+			</div>
+
+			<label class="label-input100" for="message"><%= t 'enter_message' %> *</label>
+			<div class="wrap-input100 validate-input" data-validate = "Message is required">
+                <%= f.text_area :message, class: 'input100 required', rows: '4', placeholder: "#{t 'message_placeholder'}", required: true %>
+			</div>
+
+			<div class="container-contact100-form-btn">
+				<%= f.submit t('send_message'), class: 'contact100-form-btn' %>
+			</div>
+		<% end %>
+		<div class="contact100-more flex-col-c-m" style="background-image: url('<%= asset_path('bg-01.jpg') %>');">
+			<div class="flex-w size1 p-b-47">
+				<div class="txt1 p-r-25">
+					<span class="lnr lnr-map-marker"></span>
+				</div>
+
+				<div class="flex-col size2">
+					<span class="txt1 p-b-20">
+						<%= t 'address' %>
+					</span>
+
+					<span class="txt2">
+						<%= t 'get_address' %>
+					</span>
+				</div>
+			</div>
+
+			<div class="dis-flex size1 p-b-47">
+				<div class="txt1 p-r-25">
+					<span class="lnr lnr-phone-handset"></span>
+				</div>
+
+				<div class="flex-col size2">
+					<span class="txt1 p-b-20">
+						<%= t 'lets_talk' %>
+					</span>
+
+					<span class="txt3">
+						<%= t 'mobile_number' %>
+					</span>
+				</div>
+			</div>
+
+			<div class="dis-flex size1 p-b-47">
+				<div class="txt1 p-r-25">
+					<span class="lnr lnr-envelope"></span>
+				</div>
+
+				<div class="flex-col size2">
+					<span class="txt1 p-b-20">
+						<%= t 'general_support' %>
+					</span>
+
+					<span class="txt3">
+						<%= t 'email_id' %>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
